@@ -7,8 +7,8 @@ https://leetcode.com/problems/search-in-a-binary-search-tree/description/
 using namespace std;
 
 static const auto kSpeedUp = []() {
-	std::ios::sync_with_stdio(false);
-	std::cin.tie(nullptr);
+	std::ios::sync_with_stdio(false);//设置在每次输入/输出操作后标准C ++流是否与标准C流同步
+	std::cin.tie(nullptr);//解除std :: cin和std :: cout之间的绑定，降低IO的负担使效率提升
 	return nullptr;
 }();
 
