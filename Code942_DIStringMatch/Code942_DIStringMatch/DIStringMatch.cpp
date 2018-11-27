@@ -1,0 +1,56 @@
+/*
+https://leetcode.com/problems/di-string-match/
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+static const auto kSpeedUp = [](){
+	std::ios::sync_with_stdio(false);
+	std::cin.tie(nullptr);
+	return nullptr;
+}();
+
+class Solution {
+public:
+	vector<int> diStringMatch(string S) {
+		vector<int>nums;
+		if (S.empty()){
+			return nums;
+		}
+		int minNum = 0;
+		int maxNum = S.size();
+		for (int i = 0; i < S.size(); i++){
+			if (S[i] == 'I'){
+				nums.push_back(minNum++);
+			}
+			else {
+				nums.push_back(maxNum--);
+			}
+		}
+		nums.push_back(maxNum--);
+		return nums;
+	}
+	void printMatchNum(vector<int>arr){
+		for (int i = 0; i < arr.size(); i++){
+			cout << arr[i] << " ";
+		}
+		cout << endl;
+	}
+};
+
+int main(){
+	string str1 = "IDID";
+	string str2 = "III";
+	string str3 = "DDI";
+	string str4 = "DIIDIIIIDDDIIDDIIDIDDIIDDDIIDIDDIDIIIIIIDIIIIIDDDDDIDIDIIIDIDDDIDIDIDDIDIDDDDDIDDIDIDDDIDIDDDIIIIDDIDDDDIDIDIIDIIDDDDIIIDDDDDDIDDDDIDDDIDDIDDIIDDDDDIDIDIDDIIDIDDDDIDDDDIDDDIIIIDIDDIDIIDIDIIIDIDIIIIDIDDDIDDDIDDIIIIIIDDIDIDDDDIDIDDIIDIIDDIDDIDDIDDIDIIIIIDIDDDIDIIIIDDDDIIIDIDIIIIIIDDIDIIIDDDDDIIDIIIIIIDDIIDDIIIDDDIDIDIDIIDDIIIIDIIDDIDDDIDDIIIIIIDIDIDIDIIDDIDDIDIDDDIIIDIIIDDIIDDIIIIIDIDDDDIIDIIIIDDIDIDIIDIDDDIIIDDIDDIDDDDIDIDIDIIDIDIIDIIIIDDDDDIIIDDIDDDIIDDIDDIDIDDDDIDDIDDDDDDIIDDDDDDIDDIDDIDIDDIIIDIIDDDDIDDIDDDDDIDIIIIDDDDIDIDIIIDIDIIDIDDIIIIDDIIIIDIDDIDIDDDIDDDDIIIIDIIIDDIIDIIIDIDDIDIIIDIDIDIDIIIDDDIIIIIIDIIIIDDDDDDDIIDIIDIDDDIIIIIDIIIIIIDDIDIIDDIIIDIDIIDDIDDDDDDIDDIDDDIDDIDIIDIDIIIIIDIDIIIDIDIIDIIIIIIDDDDDIIDDDIIDDDIDIIIDDDDDDDIDDDIDDDDIIIDDDIIIIDIDDDIDDDIDIDIIIDDIIDDDIIDDDIIDDDIIIDIDIIDIDIIIDIDDIDIDDIIDIDIIDIDIIIDDIDIIDIIDDDDIIIIIIIDIDDIDIIIDIIDDIDIDDDDIDDIDDDDDIDDIIDIDDIDDIDDIDIDDIDIIDDDIIIDIIDDIIIDIDDIDDIDDIDDDIDDIDIIDIIIIDIDIIIDDDIDDIIIIIDIDDIIIIIDIIIDIDDIDDDIIDIDDDDDDIIDIDIIIIDIDDD";
+	Solution s;
+	s.printMatchNum(s.diStringMatch(str1));
+	s.printMatchNum(s.diStringMatch(str2));
+	s.printMatchNum(s.diStringMatch(str3));
+	s.printMatchNum(s.diStringMatch(str4));
+	system("pause");
+	return 0;
+}
